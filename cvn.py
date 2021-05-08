@@ -12,6 +12,8 @@ def string_is_bin(s):
 	return compare_length(s, "0b", 2)
 def string_is_oct(s):
 	return compare_length(s, "0o", 2)
+def string_is_dec(s):
+	return (len(s) <= 2 or s[1].isnumeric())
 def string_is_hex(s):
 	return compare_length(s, "0x", 2)
 
@@ -36,7 +38,11 @@ if __name__ == "__main__":
 
 	if len(argv) == 3:
 		otype = argv[2]
-	else: otype = "dec"
+	else:
+		if string_is_dec(inum):
+			otype = "hex"
+		else:
+			otype = "dec"
 
 	if string_is_bin(inum):
 		print_base(int(inum, 2), otype)
