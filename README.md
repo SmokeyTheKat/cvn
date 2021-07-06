@@ -1,9 +1,9 @@
 # cvn
 Convert between different number bases from the terminal!
 
-Just enter the the number and then the output base. If no output base entered then it is assmued to be dec.
+Just enter the output base and then the number. If no output base entered then it is assmued to be dec.
 ```
-# cvn 638 hex
+# cvn hex 638
 0x273
 # cvn 0x42
 66

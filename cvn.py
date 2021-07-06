@@ -27,28 +27,46 @@ def print_base(n, b):
 	if b == "hex":
 		print(hex(n))
 
+def is_type(n):
+	if n == "bin":
+		return True
+	if n == "oct":
+		return True
+	if n == "dec":
+		return True
+	if n == "hex":
+		return True
+	return False
+	
+
 if __name__ == "__main__":
 	argv = sys.argv
 	inum = None
 	otype = None
+	findtype = False
 
 	if len(argv) == 1:
 		exit(0)
-	else: inum = argv[1]
 
-	if len(argv) == 3:
-		otype = argv[2]
+	if len(argv) > 2 and is_type(argv[1]):
+		otype = argv[1]
+		argv = argv[2:]
 	else:
-		if string_is_dec(inum):
-			otype = "hex"
+		argv = argv[1:]
+		findtype = True
+
+
+	for inum in argv:
+		if findtype:
+			if string_is_dec(inum):
+				otype = "hex"
+			else: otype = "dec"
+
+		if string_is_bin(inum):
+			print_base(int(inum, 2), otype)
+		elif string_is_oct(inum):
+			print_base(int(inum, 8), otype)
+		elif string_is_hex(inum):
+			print_base(int(inum, 16), otype)
 		else:
-			otype = "dec"
-
-	if string_is_bin(inum):
-		print_base(int(inum, 2), otype)
-	elif string_is_oct(inum):
-		print_base(int(inum, 8), otype)
-	elif string_is_hex(inum):
-		print_base(int(inum, 16), otype)
-	else:
-		print_base(int(inum, 10), otype)
+			print_base(int(inum, 10), otype)
