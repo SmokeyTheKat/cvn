@@ -3,8 +3,9 @@
 import sys
 
 def compare_length(s1, s2, l):
+	if len(s1) < l or len(s2) < l: return False
 	for i in range(l):
-		if s1[i] != s2[i] or i < len(s1) or i < len(s2):
+		if s1[i] != s2[i]:
 			return False
 	return True
 
