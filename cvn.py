@@ -71,3 +71,4 @@ if __name__ == "__main__":
 			print_base(int(inum, 16), otype)
 		else:
 			print_base(int(inum, 10), otype)
+
