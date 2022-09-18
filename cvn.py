@@ -21,12 +21,14 @@ def string_is_hex(s):
 def print_base(n, b):
 	if b == "bin":
 		print(bin(n))
-	if b == "oct":
+	elif b == "oct":
 		print(oct(n))
-	if b == "dec":
+	elif b == "dec":
 		print(n)
-	if b == "hex":
+	elif b == "hex":
 		print(hex(n))
+	elif b == "chr":
+		print(repr(str(chr(n))))
 
 def is_type(n):
 	if n == "bin":
@@ -36,6 +38,8 @@ def is_type(n):
 	if n == "dec":
 		return True
 	if n == "hex":
+		return True
+	if n == "chr":
 		return True
 	return False
 	
